@@ -1,0 +1,25 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Set up the WebDriver (make sure to have the correct path to your WebDriver)
+driver = webdriver.Chrome('./chromedriver')
+
+try:
+    # Navigate to the Selenium Playground Table Search Demo
+    driver.get("https://www.lambdatest.com/selenium-playground/table-sort-search-demo")
+
+    # Locate the search box using its name attribute (assuming the search box has a name attribute)
+    search_box = driver.find_element("name", "search")  # Adjust the locator as needed
+
+    # Interact with the search box
+    search_box.clear()  # Clear any existing text
+    search_box.send_keys("New York")  # Enter the search term
+    search_box.send_keys(Keys.RETURN)  # Press Enter to submit the search
+
+    # Optional: Wait for a moment to see the results (not necessary in production code)
+    time.sleep(3)
+
+finally:
+    # Close the browser
+    driver.quit()
